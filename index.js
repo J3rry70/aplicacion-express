@@ -25,7 +25,7 @@ const db = new sqlite3.Database('./base.sqlite3', (err) => {
 
 // --- ENDPOINTS ---
 
-app.post('/insert', jsonParser, function (req, res) {
+app.post('/agrega_todo', jsonParser, function (req, res) {
     const { todo } = req.body;
 
     if (!todo) {

@@ -48,6 +48,20 @@ app.get('/', function (req, res) {
     res.status(200).json({ 'status': 'ok' });
 });
 
+app.get('/tareas', (req, res) => {
+    db.all('SELECT * FROM todos', [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).json({ error: 'Error al consultar la base de datos' });
+        }
+        res.status(200).json({
+            success: true,
+            count: rows.length,
+            data: rows
+        });
+    });
+});
+
 app.post('/login', jsonParser, function (req, res) {
     res.status(200).json({ 'status': 'ok' });
 });
